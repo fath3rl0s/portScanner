@@ -4,7 +4,7 @@
 # Socket allows communication between machines using UDP and TCP
 # termcolor for printing in different colors
 import socket
-# import termcolor
+# import termcolor - In progress
 
 # Define another function
 # Scan function takes 2 arguments
