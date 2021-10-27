@@ -1,29 +1,44 @@
 # Basic Port Scanner
+# Import Library
 
+# Socket allows communication between machines using UDP and TCP
+# termcolor for printing in different colors
 import socket
-import termcolor
+# import termcolor
 
-
+# Define another function
+# Scan function takes 2 arguments
 def scan(target, ports):
-    for port in range(1,ports):
-        scan_port(target,port)
+    # iterate  from 1 to user input
+    for port in range(1, ports):
+        # Call scan_port function for each input in range
+        scan_port(target, port)
 
+# Create and Initiate Function
 def scan_port(ipaddress, port):
+    # Try an Except Statement
     try:
+        # Calling the socket function from socket library and stored as 'sock'
         sock = socket.socket()
+        # connect to target and port by using socket object and the connect function
+        # connect function requires 2 parameters IP, port
         sock.connect((ipaddress, port))
         print("[+] Port Opened " + str(port))
         sock.close()
     except:
         print("[-] Port Closed " + str(port))
 
-targets = input("[*] Enter Targets To Scan (split them by comma): ")
+# Variables from User
+targets = input("[*] Enter Targets To Scan (split them with comma): ")
 ports = input("[*] Enter How Many Ports You Want To Scan: ")
 
+
+# Allows for multiple IP targets
 if ',' in targets:
     print("[*] Scanning Multiple Targets")
+    # Splits input with specified character ','
     for ip_addr in targets.split(','):
         scan(ip_addr.strip(' '), ports)
 
     else:
-        scan(targets,ports)
+        scan(targets, ports)
